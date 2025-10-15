@@ -70,7 +70,7 @@ sudo chmod +x "${CUSTOM_SCRIPT_PATH}"
 # This sed command finds the line with the conflicting JULI manager and DELETES it.
 CONFLICT_STRING="Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager"
 sudo sed -i "/${CONFLICT_STRING}/d" "${CUSTOM_SCRIPT_PATH}"
-sudo sed -i 's/^\( * -Djava.util.logging.config.file=.*\)\\$/\1"/' "${CUSTOM_SCRIPT_PATH}"
+sudo sed -i 's/^\([[:space:]]*-Djava.util.logging.config.file=.*\)\\$/\1"/' "${CUSTOM_SCRIPT_PATH}"
 echo "    Custom script created at ${CUSTOM_SCRIPT_PATH}"
 
 ### 7. Create Instance Environment File
