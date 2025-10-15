@@ -139,3 +139,4 @@ for IP in ${IP_ADDRESSES}; do
   echo "   - http://${IP}:8080/examples/"
 done
 echo ""
+#end
