@@ -75,7 +75,8 @@ echo "--> Step 7: Creating instance-specific environment file..."
 sudo tee "${SYSTEMD_ENV_FILE}" > /dev/null <<'EOF'
 CATALINA_BASE="INSTANCE_BASE_PLACEHOLDER"
 CLASSPATH="/usr/share/java/log4j/log4j-api.jar:/usr/share/java/log4j/log4j-core.jar:/usr/share/java/log4j/log4j-jul.jar"
-CATALINA_OPTS="-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager -Dlog4j.configurationFile=file:${CATALINA_BASE}/lib/log4j2.xml --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED"
+CATALINA_OPTS="-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager -Dlog4j.configurationFile=file:${CATALINA_BASE}/lib/log4j2.xml"
+JAVA_OPTS="--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED"
 EOF
 sudo sed -i "s|INSTANCE_BASE_PLACEHOLDER|${INSTANCE_BASE_DIR}|g" "${SYSTEMD_ENV_FILE}"
 
