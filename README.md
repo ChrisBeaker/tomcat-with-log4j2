@@ -1,6 +1,6 @@
 # Tomcat Instance Automation for SLES
 
-A comprehensive shell script to automate the creation of isolated, production-ready Apache Tomcat instances on SUSE Linux Enterprise Server (SLES). This script replaces the default Tomcat JULI logger with the more powerful and flexible Log4j2 logging framework.
+A comprehensive shell script to automate the creation of isolated Apache Tomcat instances on SUSE Linux Enterprise Server (SLES SP7). This script replaces the default Tomcat JULI logger with Log4j2 logging framework.
 
 ## Overview
 
