@@ -66,13 +66,12 @@ echo "    Libraries and test app are linked."
 echo "--> Step 6: Creating custom, upgrade-safe startup script..."
 sudo cp /usr/lib/tomcat/server "${CUSTOM_SCRIPT_PATH}"
 sudo chmod +x "${CUSTOM_SCRIPT_PATH}"
+
 # This sed command finds the line with the conflicting JULI manager and DELETES it.
 CONFLICT_STRING="Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager"
 sudo sed -i "/${CONFLICT_STRING}/d" "${CUSTOM_SCRIPT_PATH}"
-# This second command finds the line that was above the deleted one and fixes its syntax
-# by replacing the trailing backslash "\" with a closing quote ".
-FIX_SYNTAX_STRING="-Djava.util.logging.config.file=\${LOGGING_PROPERTIES}"
-sudo sed -i "s|${FIX_SYNTAX_STRING} \\|${FIX_SYNTAX_STRING}\"|" "${CUSTOM_SCRIPT_PATH}"
+sudo sed -i 's/^\( * -Djava.util.logging.config.file=.*\)\\$/\1"/' "${CUSTOM_SCRIPT_PATH}"
+echo "    Custom script created at ${CUSTOM_SCRIPT_PATH}"
 
 ### 7. Create Instance Environment File
 echo "--> Step 7: Creating instance-specific environment file..."
