@@ -68,7 +68,7 @@ sudo cp /usr/lib/tomcat/server "${CUSTOM_SCRIPT_PATH}"
 sudo chmod +x "${CUSTOM_SCRIPT_PATH}"
 # This sed command finds the line with the conflicting JULI manager and comments it out.
 CONFLICT_STRING="Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager"
-sudo sed -i "s|.*${CONFLICT_STRING}.*|# &|" "${CUSTOM_SCRIPT_PATH}"
+sudo sed -i "/${CONFLICT_STRING}/d" "${CUSTOM_SCRIPT_PATH}"
 
 ### 7. Create Instance Environment File
 echo "--> Step 7: Creating instance-specific environment file..."
