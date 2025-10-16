@@ -113,7 +113,7 @@ sudo tee "${INSTANCE_LIB_DIR}/log4j2.xml" > /dev/null <<'EOF'
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Logger name="org.apache" level="warn" /><Root level="info"><AppenderRef ref="Console"/><AppenderRef ref="File"/></Root>
+        <Logger name="org.apache" level="info" /><Root level="info"><AppenderRef ref="Console"/><AppenderRef ref="File"/></Root>
     </Loggers>
 </Configuration>
 EOF
